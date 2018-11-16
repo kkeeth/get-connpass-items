@@ -4,7 +4,7 @@
 
 # get-connpass-items
 
-`get-connpass-items (gtconn)` is a CLI application.
+`get-connpass-items (gtci)` is a CLI application. This app uses the API of 'connpass' that is the platform about IT engineer's study group in Japan to acquire study group information.
 
 ## Installation
 
