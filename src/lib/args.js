@@ -1,7 +1,7 @@
 const chalk = require('chalk')
 module.exports = require('yargs')
-   .usage('Usage:\n' + ('' + chalk.green.bold('  $0 <module names>\n')))
-   .example('' + chalk.green.bold('$0'))
+   .usage('Usage:\n' + ('' + chalk.green.bold('  $0 [-k <keyword>] [-n <nickname>] [-c <count>]\n')))
+   .example('' + chalk.green.bold('$0 -k wejs -n kuwahara_jsar -c 5'))
    .options({
       'n': {
          alias: 'nickname',
