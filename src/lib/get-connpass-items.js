@@ -5,6 +5,10 @@ const axios = require('axios')
 const utils = require('./utils')
 const args  = require('./args')
 
+const Spinner = require('cli-spinner').Spinner
+const spinner = new Spinner('proccessing... %s')
+spinner.setSpinnerString(18)
+
 const instance = axios.create({
    baseURL: 'https://connpass.com/api/v1/',
    timeout: 10000
@@ -18,6 +22,7 @@ const instance = axios.create({
  * @return void
  */
 module.exports = () => {
+   spinner.start()
    instance
       .get('/event', {
          params: {
@@ -35,6 +40,9 @@ module.exports = () => {
                `, { borderColor: 'cyan' }
             ))
          })
+      })
+      .then(() => {
+         spinner.stop()
       })
       .catch((err) => {
          if (err.config.timeout === 10000) {
