@@ -7,7 +7,7 @@ const args  = require('./args')
 
 const instance = axios.create({
    baseURL: 'https://connpass.com/api/v1/',
-   timeout: 5000
+   timeout: 10000
 })
 
 /**
@@ -37,7 +37,7 @@ module.exports = () => {
          })
       })
       .catch((err) => {
-         if (err.config.timeout === 5000) {
+         if (err.config.timeout === 10000) {
             console.log(boxen('   Request timeout ;(   \n   Please try again.', { borderColor: 'red' }
          ))
          }
