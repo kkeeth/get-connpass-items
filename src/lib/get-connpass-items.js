@@ -46,11 +46,13 @@ module.exports = () => {
       })
       .catch((err) => {
          if (err.config.timeout === 10000) {
+            console.log('\n')
             console.log(boxen('   Request timeout ;(   \n   Please try again.', { borderColor: 'red' }
          ))
          }
          else {
             console.error(err.config)
          }
+         spinner.stop()
       })
 }
