@@ -43,9 +43,10 @@ $ gtci -k wejs -n kuwahara_jsar -c 3
 note: If it takes more than `30s` it will time out.
 
 ```
-┌───────────────────────────┐
-│   Now on maintenance ;(   │
-└───────────────────────────┘
+┌────────────────────────┐
+│   Request timeout ;(   │
+│   Please try again.    │
+└────────────────────────┘
 ```
 
 note: If connpass is undergoing maintenance,
