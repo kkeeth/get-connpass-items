@@ -10,7 +10,8 @@ const spinner = new Spinner('Proccessing... %s')
 spinner.setSpinnerString(18)
 
 const instance = axios.create({
-   baseURL: 'https://connpass.com/api/v1/'
+   baseURL: 'https://connpass.com/api/v1/',
+   timeout: 30000
 })
 
 /**
@@ -31,6 +32,9 @@ module.exports = () => {
          }
       })
       .then((res) => {
+         spinner.stop()
+         console.log('\n')
+
          res.data.events.forEach((item) => {
             console.log(boxen(`
    title: ${item.title}   
@@ -40,20 +44,21 @@ module.exports = () => {
             ))
          })
       })
-      .then(() => {
-         spinner.stop()
-      })
       .catch((err) => {
          spinner.stop()
          console.log('\n')
 
+         if (err.config.timeout === 30000) {
+            console.log(boxen('   Request timeout ;(   \n   Please try again.', { borderColor: 'red' }))
+            return
+         }
          switch (err.response.status) {
             case 502:
-               console.log(boxen('   Now on maintenance   ', { borderColor: 'red' }))
+               console.log(boxen('   Now on maintenance ;(   ', { borderColor: 'red' }))
                break
             case 504:
             default:
-               console.log(boxen('   Internal Server Error   ', { borderColor: 'red' }))
+               console.log(boxen('   Internal Server Error ;(   ', { borderColor: 'red' }))
                break
          }
       })
