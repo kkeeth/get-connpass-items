@@ -6,12 +6,11 @@ const utils = require('./utils')
 const args  = require('./args')
 
 const Spinner = require('cli-spinner').Spinner
-const spinner = new Spinner('proccessing... %s')
+const spinner = new Spinner('Proccessing... %s')
 spinner.setSpinnerString(18)
 
 const instance = axios.create({
-   baseURL: 'https://connpass.com/api/v1/',
-   timeout: 10000
+   baseURL: 'https://connpass.com/api/v1/'
 })
 
 /**
@@ -45,14 +44,17 @@ module.exports = () => {
          spinner.stop()
       })
       .catch((err) => {
-         if (err.config.timeout === 10000) {
-            console.log('\n')
-            console.log(boxen('   Request timeout ;(   \n   Please try again.', { borderColor: 'red' }
-         ))
-         }
-         else {
-            console.error(err.config)
-         }
          spinner.stop()
+         console.log('\n')
+
+         switch (err.response.status) {
+            case 502:
+               console.log(boxen('   Now on maintenance   ', { borderColor: 'red' }))
+               break
+            case 504:
+            default:
+               console.log(boxen('   Internal Server Error   ', { borderColor: 'red' }))
+               break
+         }
       })
 }
