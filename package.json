@@ -1,6 +1,6 @@
 {
   "name": "get-connpass-items",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "get-connpass-items(csm) is a CLI application.",
   "license": "MIT",
   "main": "./lib/get-connpass-items",
