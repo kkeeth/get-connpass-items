@@ -40,13 +40,28 @@ $ gtci -k wejs -n kuwahara_jsar -c 3
 └────────────────────────────────────────────────────────────┘
 ```
 
-note: If it takes more than `5000ms` it will time out.
+note: If it takes more than `30s` it will time out.
 
 ```
-┌────────────────────────┐
-│   Request timeout ;(   │
-│   Please try again.    │
-└────────────────────────┘
+┌───────────────────────────┐
+│   Now on maintenance ;(   │
+└───────────────────────────┘
+```
+
+note: If connpass is undergoing maintenance,
+
+```
+┌───────────────────────────┐
+│   Now on maintenance ;(   │
+└───────────────────────────┘
+```
+
+note: If some error occurs,
+
+```
+┌──────────────────────────────┐
+│   Internal Server Error ;(   │
+└──────────────────────────────┘
 ```
 
 ## License
